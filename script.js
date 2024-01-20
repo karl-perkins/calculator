@@ -14,7 +14,7 @@ function divide(a, b) {
 	return a / b;
 }
 
-let num1, operator, num2;
+let num1 = '', operator = '', num2 = '';
 
 function operate(operator, num1, num2) {
 	switch (operator) {
@@ -35,9 +35,42 @@ function operate(operator, num1, num2) {
 
 const display = document.querySelector('#display');
 const numberButtons = document.querySelectorAll('.number-button');
+const operatorButtons = document.querySelectorAll('.operator-button');
+const equalsButton = document.querySelector('#equals-button');
+const clearButton = document.querySelector('#clear-button');
 
 numberButtons.forEach((button) => {
 	button.addEventListener('click', (event) => {
-		display.textContent += event.target.textContent;
+		if (operator === '') {
+			num1 += event.target.textContent;
+		} else {
+			num2 += event.target.textContent;
+		}
+		display.textContent = `${num1} ${operator} ${num2}`;
 	});
+});
+
+operatorButtons.forEach((button) => {
+	button.addEventListener('click', (event) => {
+		// Handle performing operations on previous result
+		if (num1 === '' && display.textContent !== '') {
+			num1 = display.textContent;
+		}
+
+		// Handle operation chaining
+		if (num2 !== '') {
+			num1 = operate(operator, +num1, +num2);
+			num2 = '';
+		}
+
+		operator = event.target.textContent;
+		display.textContent = `${num1} ${operator} ${num2}`;
+	});
+});
+
+equalsButton.addEventListener('click', (event) => {
+	display.textContent = operate(operator, +num1, +num2);;
+	num1 = '';
+	operator = '';
+	num2 = '';
 });
