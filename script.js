@@ -33,7 +33,8 @@ function operate(operator, num1, num2) {
 	}
 }
 
-const display = document.querySelector('#display');
+const display = document.querySelector('#input');
+const memory = document.querySelector('#memory');
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equalsButton = document.querySelector('#equals-button');
@@ -43,10 +44,11 @@ numberButtons.forEach((button) => {
 	button.addEventListener('click', (event) => {
 		if (operator === '') {
 			num1 += event.target.textContent;
+			display.textContent = num1;
 		} else {
 			num2 += event.target.textContent;
+			display.textContent = num2;
 		}
-		display.textContent = `${num1} ${operator} ${num2}`;
 	});
 });
 
@@ -64,12 +66,14 @@ operatorButtons.forEach((button) => {
 		}
 
 		operator = event.target.textContent;
-		display.textContent = `${num1} ${operator} ${num2}`;
+		memory.textContent = `${num1} ${operator} ${num2}`;
+		display.textContent = ''
 	});
 });
 
 equalsButton.addEventListener('click', (event) => {
 	if (num1 !== '' && operator !== '' && num2 !== '') {
+		memory.textContent += ` ${num2} =`;
 		display.textContent = operate(operator, +num1, +num2);;
 		num1 = '';
 		operator = '';
@@ -79,6 +83,7 @@ equalsButton.addEventListener('click', (event) => {
 
 clearButton.addEventListener('click', (event) => {
 	display.textContent = '';
+	memory.textContent = '';
 	num1 = '';
 	operator = '';
 	num2 = '';
