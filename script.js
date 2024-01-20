@@ -76,3 +76,10 @@ equalsButton.addEventListener('click', (event) => {
 		num2 = '';
 	}
 });
+
+clearButton.addEventListener('click', (event) => {
+	display.textContent = '';
+	num1 = '';
+	operator = '';
+	num2 = '';
+});
