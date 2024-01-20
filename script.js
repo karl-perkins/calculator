@@ -42,6 +42,13 @@ const clearButton = document.querySelector('#clear-button');
 
 numberButtons.forEach((button) => {
 	button.addEventListener('click', (event) => {
+
+		// Handle single decimal point
+		// Alternatively, could disable the . button
+		if (event.target.textContent === '.' && display.textContent.includes('.')) {
+			return;
+		}
+
 		if (operator === '') {
 			num1 += event.target.textContent;
 			display.textContent = num1;
@@ -49,6 +56,7 @@ numberButtons.forEach((button) => {
 			num2 += event.target.textContent;
 			display.textContent = num2;
 		}
+
 	});
 });
 
