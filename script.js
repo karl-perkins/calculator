@@ -69,8 +69,10 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener('click', (event) => {
-	display.textContent = operate(operator, +num1, +num2);;
-	num1 = '';
-	operator = '';
-	num2 = '';
+	if (num1 !== '' && operator !== '' && num2 !== '') {
+		display.textContent = operate(operator, +num1, +num2);;
+		num1 = '';
+		operator = '';
+		num2 = '';
+	}
 });
