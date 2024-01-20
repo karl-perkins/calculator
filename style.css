@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+	font-family: Roboto, sans-serif;
+}
+
+#calculator {
+	max-width: 320px;
+	margin: 0 auto;
+}
+
+#display {
+	height: 80px;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+	font-size: 28px;
+	border: 1px solid black;
+	border-radius: 8px;
+	padding: 6px 12px;
+}
+
+#buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+button {
+	height: 40px;
+	flex: 1 0 60px;
+	font-size: 16px;
+	border-radius: 8px;
+}
+
+#clear-button {
+	flex: 1 0 100%;
+}
