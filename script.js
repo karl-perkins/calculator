@@ -17,20 +17,22 @@ function divide(a, b) {
 let num1 = '', operator = '', num2 = '';
 
 function operate(operator, num1, num2) {
+	let result;
 	switch (operator) {
 		case '+': {
-			return add(num1, num2);
+			result = add(num1, num2);
 		}
 		case '-': {
-			return subtract(num1, num2);
+			result = subtract(num1, num2);
 		}
 		case '*': {
-			return multiply(num1, num2);
+			result = multiply(num1, num2);
 		}
 		case '/': {
-			return divide(num1, num2);
+			result = divide(num1, num2);
 		}
 	}
+	return result.toString().length > 16 ? result.toFixed(16) : result;
 }
 
 const display = document.querySelector('#input');
