@@ -39,6 +39,7 @@ const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equalsButton = document.querySelector('#equals-button');
 const clearButton = document.querySelector('#clear-button');
+const backspaceButton = document.querySelector('#backspace-button');
 
 numberButtons.forEach((button) => {
 	button.addEventListener('click', (event) => {
@@ -95,4 +96,14 @@ clearButton.addEventListener('click', (event) => {
 	num1 = '';
 	operator = '';
 	num2 = '';
+});
+
+backspaceButton.addEventListener('click', (event) => {
+	if (operator === '') {
+		num1 = num1.slice(0, -1);
+		display.textContent = num1;
+	} else {
+		num2 = num2.slice(0, -1);
+		display.textContent = num2;
+	}
 });

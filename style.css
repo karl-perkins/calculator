@@ -48,6 +48,7 @@ button {
 	border-radius: 8px;
 }
 
-#clear-button {
-	flex: 1 0 100%;
+#clear-button,
+#backspace-button {
+	flex: 1 0 45%;
 }
